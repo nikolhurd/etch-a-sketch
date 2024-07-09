@@ -1,12 +1,19 @@
 const grid = document.querySelector("#grid");
 
-for (let i = 0; i < 16; i++) {
-  const newRow = document.createElement("div");
-  grid.appendChild(newRow);
-  newRow.textContent = "row";
-  for (let j = 0; j < 15; j++) {
-    const newCol = document.createElement("div");
-    grid.appendChild(newCol);
-    newCol.textContent = "col";
+const createGrid = (number) => {
+  for (let i = 0; i < number; i++) {
+    const newRow = document.createElement("div");
+    grid.appendChild(newRow);
+    newRow.addEventListener("mouseover", () => {
+      newRow.style.background = "blue";
+    });
+    for (let j = 0; j < number - 1; j++) {
+      const newCol = document.createElement("div");
+      grid.appendChild(newCol);
+      newCol.addEventListener("mouseover", () => {
+        newCol.style.background = "blue";
+      });
+    }
   }
-}
+};
+createGrid(16);
