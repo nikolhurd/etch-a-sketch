@@ -26,9 +26,9 @@ const createGrid = (size) => {
     newRow.style.width = newSize;
     newRow.style.height = newSize;
     newRow.style.border = "0.1px solid black";
-    newRow.style.backgroundColor = "lightgray";
+    newRow.style.backgroundColor = "whitesmoke";
     newRow.addEventListener("mouseover", () => {
-      newRow.style.background = "blue";
+      newRow.style.background = "lightblue";
     });
     for (let j = 0; j < size; j++) {
       const newCol = document.createElement("div");
@@ -36,9 +36,9 @@ const createGrid = (size) => {
       newCol.style.width = newSize;
       newCol.style.height = newSize;
       newCol.style.border = "0.1px solid black";
-      newCol.style.backgroundColor = "lightgray";
+      newCol.style.backgroundColor = "whitesmoke";
       newCol.addEventListener("mouseover", () => {
-        newCol.style.background = "blue";
+        newCol.style.background = "lightblue";
       });
     }
   }
