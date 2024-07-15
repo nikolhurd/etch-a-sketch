@@ -31,9 +31,24 @@ const createGrid = (size) => {
     }
   }
 };
-createGrid(100);
 
-// btnSize.addEventListener("click", () => {
-//   createGrid(size);
-// });
-// let size = prompt("Enter number of square line (1 - 100)", 16);
+btnSize.addEventListener("click", () => {
+  let userSize = prompt("Enter number of square line (1 - 100)", 16);
+
+  function removeAllChildNodes(grid, callback) {
+    let child = grid.lastChild;
+    while (child) {
+      grid.removeChild(child);
+      child = grid.lastChild;
+    }
+    callback();
+  }
+
+  removeAllChildNodes(grid, () => {
+    if (userSize > 101) {
+      alert("Choose number between 1-100");
+      userSize = prompt("Enter number of square line (1 - 100)", 16);
+    }
+    createGrid(userSize);
+  });
+});
