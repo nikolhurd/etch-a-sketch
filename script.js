@@ -1,5 +1,17 @@
 const grid = document.querySelector("#grid");
 const btnSize = document.querySelector("#size");
+const btnDel = document.querySelector("#delete");
+
+function removeAllChildNodes(grid, callback) {
+  let child = grid.lastChild;
+  while (child) {
+    grid.removeChild(child);
+    child = grid.lastChild;
+  }
+  if (callback) {
+    callback();
+  }
+}
 
 const createGrid = (size) => {
   function intToPx(value) {
@@ -35,15 +47,6 @@ const createGrid = (size) => {
 btnSize.addEventListener("click", () => {
   let userSize = prompt("Enter number of square line (1 - 100)", 16);
 
-  function removeAllChildNodes(grid, callback) {
-    let child = grid.lastChild;
-    while (child) {
-      grid.removeChild(child);
-      child = grid.lastChild;
-    }
-    callback();
-  }
-
   removeAllChildNodes(grid, () => {
     if (userSize > 101) {
       alert("Choose number between 1-100");
@@ -51,4 +54,8 @@ btnSize.addEventListener("click", () => {
     }
     createGrid(userSize);
   });
+});
+
+btnDel.addEventListener("click", () => {
+  removeAllChildNodes(grid);
 });
