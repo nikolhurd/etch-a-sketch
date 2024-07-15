@@ -28,7 +28,7 @@ const createGrid = (size) => {
     newRow.style.border = "0.1px solid black";
     newRow.style.backgroundColor = "whitesmoke";
     newRow.addEventListener("mouseover", () => {
-      newRow.style.background = "lightblue";
+      newRow.style.background = "CadetBlue";
     });
     for (let j = 0; j < size; j++) {
       const newCol = document.createElement("div");
@@ -38,7 +38,7 @@ const createGrid = (size) => {
       newCol.style.border = "0.1px solid black";
       newCol.style.backgroundColor = "whitesmoke";
       newCol.addEventListener("mouseover", () => {
-        newCol.style.background = "lightblue";
+        newCol.style.background = "CadetBlue";
       });
     }
   }
