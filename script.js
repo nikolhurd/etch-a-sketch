@@ -1,6 +1,8 @@
 const grid = document.querySelector("#grid");
 const btnSize = document.querySelector("#size");
 const btnDel = document.querySelector("#delete");
+const btnRandom = document.querySelector("#random");
+const btnClear = document.querySelector("#clear");
 
 function removeAllChildNodes(grid, callback) {
   let child = grid.lastChild;
@@ -12,6 +14,20 @@ function removeAllChildNodes(grid, callback) {
     callback();
   }
 }
+
+const randomColor = () => {
+  "use strict";
+  const randomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  return () => {
+    var h = randomInt(0, 360);
+    var s = randomInt(42, 98);
+    var l = randomInt(40, 90);
+    return `hsl(${h},${s}%,${l}%)`;
+  };
+};
 
 const createGrid = (size) => {
   function intToPx(value) {
@@ -39,6 +55,17 @@ const createGrid = (size) => {
       newCol.style.backgroundColor = "whitesmoke";
       newCol.addEventListener("mouseover", () => {
         newCol.style.background = "CadetBlue";
+      });
+      btnRandom.addEventListener("click", () => {
+        newCol.addEventListener("mouseover", () => {
+          const colorFunction = randomColor(); // Get the color generating function
+          newCol.style.background = colorFunction();
+        });
+      });
+      btnClear.addEventListener("click", () => {
+        if (newCol.style.background !== "whitesmoke") {
+          newCol.style.background = "whitesmoke";
+        }
       });
     }
   }
